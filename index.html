@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17152f">
+  <title>Number Rush</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><div class="logo">∑</div><div><h1>Number Rush</h1><p>Think fast • build combos • beat your score</p></div></div>
+      <div class="best"><span>Best Score</span><strong id="bestScore">0</strong></div>
+    </header>
+
+    <div class="layout">
+      <aside class="nav">
+        <button class="navBtn active" data-panel="play">⚡ <span>Play</span></button>
+        <button class="navBtn" data-panel="leaderboard">👑 <span>Leaderboard</span></button>
+        <button class="navBtn" data-panel="stats">📊 <span>Stats</span></button>
+        <button class="navBtn" data-panel="achievements">🏆 <span>Achievements</span></button>
+        <button class="navBtn" data-panel="help">❔ <span>How to Play</span></button>
+      </aside>
+
+      <main>
+        <section id="playPanel" class="panel">
+          <div class="modes">
+            <button class="mode active" data-mode="classic"><strong>Classic</strong><span>60 seconds</span></button>
+            <button class="mode" data-mode="endless"><strong>Endless</strong><span>3 lives</span></button>
+            <button class="mode" data-mode="zen"><strong>Zen</strong><span>No pressure</span></button>
+          </div>
+
+          <div class="hud">
+            <div><span>Score</span><strong id="score">0</strong></div>
+            <div><span>Combo</span><strong id="combo">x1</strong></div>
+            <div><span>Level</span><strong id="level">1</strong></div>
+            <div><span id="timerLabel">Time</span><strong id="timer">60.0</strong></div>
+          </div>
+
+          <section class="arena">
+            <div id="feverBanner" class="fever hidden">🔥 FEVER MODE — DOUBLE POINTS 🔥</div>
+            <div id="burst" class="burst hidden">+100</div>
+            <div class="problemLabel">SOLVE IT</div>
+            <div id="problem" class="problem">8 + 7</div>
+            <div class="accent"></div>
+            <div id="answers" class="answers">
+              <button class="answer">12</button><button class="answer">15</button><button class="answer">17</button><button class="answer">13</button>
+            </div>
+            <div class="feverMeter"><div class="meterText"><span>Fever Meter</span><strong id="feverText">0 / 10</strong></div><div class="track"><div id="feverFill"></div></div></div>
+            <button id="startBtn" class="primary">START GAME</button>
+            <p class="tip">Use <strong>1, 2, 3, 4</strong> on your keyboard for faster answers.</p>
+          </section>
+        </section>
+
+        <section id="leaderboardPanel" class="panel hidden">
+          <div class="sectionTitle">
+            <span>Community Vibes</span>
+            <h2>Leaderboard</h2>
+          </div>
+          <div class="leaderboardWrap">
+            <div class="leaderboardHeader">
+              <div>Rank</div>
+              <div>Username</div>
+              <div>Score</div>
+            </div>
+            <div id="leaderboardList" class="leaderboardList"></div>
+          </div>
+        </section>
+
+        <section id="statsPanel" class="panel hidden">
+          <div class="sectionTitle"><span>YOUR PROGRESS</span><h2>Stats</h2></div>
+          <div class="statGrid">
+            <article><span>Best Score</span><strong id="statBest">0</strong></article>
+            <article><span>Problems Solved</span><strong id="statSolved">0</strong></article>
+            <article><span>Best Combo</span><strong id="statCombo">0</strong></article>
+            <article><span>Accuracy</span><strong id="statAccuracy">0%</strong></article>
+            <article><span>Games Played</span><strong id="statGames">0</strong></article>
+            <article><span>Highest Level</span><strong id="statLevel">1</strong></article>
+          </div>
+        </section>
+
+        <section id="achievementsPanel" class="panel hidden">
+          <div class="sectionTitle"><span>MILESTONES</span><h2>Achievements</h2></div>
+          <div id="achievementGrid" class="achievementGrid"></div>
+        </section>
+
+        <section id="helpPanel" class="panel hidden">
+          <div class="sectionTitle"><span>RULES</span><h2>How to Play</h2></div>
+          <div class="helpGrid">
+            <article><b>🧠</b><h3>Solve Fast</h3><p>Choose the correct answer as quickly as possible.</p></article>
+            <article><b>⚡</b><h3>Build Combos</h3><p>Correct answers in a row raise your score multiplier.</p></article>
+            <article><b>🔥</b><h3>Trigger Fever</h3><p>Get 10 correct in a row to earn double points for a short burst.</p></article>
+            <article><b>📈</b><h3>Level Up</h3><p>Every five correct answers makes the math harder and more rewarding.</p></article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer><span id="status">Ready to play</span><div><button id="soundBtn">Sound: On</button><button id="resetBtn" class="danger">Reset Stats</button></div></footer>
+  </div>
+
+  <div id="gameOver" class="modal hidden">
+    <div class="modalCard">
+      <div class="finishIcon">🏁</div><span>ROUND COMPLETE</span><h2 id="finalTitle">Nice Run!</h2>
+      <div id="finalScore" class="finalScore">0</div>
+      <div class="finalGrid"><div><span>Correct</span><strong id="finalCorrect">0</strong></div><div><span>Accuracy</span><strong id="finalAccuracy">0%</strong></div><div><span>Best Combo</span><strong id="finalCombo">0</strong></div></div>
+      <button id="againBtn" class="primary">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
